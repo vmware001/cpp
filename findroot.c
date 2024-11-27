@@ -19,8 +19,7 @@ int main() {
 		if (delta < 0) {
 			re = -b / (2 * a);
 			im = sqrt(-delta) / (2 * a);
-			im_2 = -im;
-			printf("x1=%f+%f i,x2=%f%f i", re, im, re, im_2);
+			printf("x1=%f+%f i,x2=%f-%f i", re, im, re, im);
 		}
 	}
 	return 0;
