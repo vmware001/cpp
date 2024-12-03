@@ -20,4 +20,5 @@ int main() {
 	for (int i = 0;i <= arrayLength;i++) {
 		printf("%d, ", array[i]);
 	}
+	return 0;
 }
