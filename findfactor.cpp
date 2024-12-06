@@ -13,24 +13,27 @@ int main() {
         int state = findFactor(num, factorArray);
         if (state != 0) {
             if (num < 0) {
-                printf("The number you entered can not be negative!\n\n");
+                printf("The number you entered can not be negative!");
             }
             if (num == 0) {
-                printf("The number you entered can not be zero!\n\n");
+                printf("The number you entered can not be zero!");
             }
         }
         if (state == 0) {
-            if (factorArray[0] == 0) {
-                printf("The number you entered is a prime!\n");
+            if (factorArray[0] == num) {
+                printf("The number you entered is a prime!");
             }
-            for (int i = 0; i <= arrayLength - 1 && factorArray[i] != 0; i++) {
-                printf("%lld", factorArray[i]);
-                if (factorArray[i + 1] != 0) {
-                    printf(", ");
+            else {
+                for (int i = 0; i <= arrayLength - 1 && factorArray[i] != 0; i++) {
+                    printf("%lld", factorArray[i]);
+                    if (factorArray[i + 1] != 0) {
+                        printf(", ");
+                    }
                 }
             }
-            printf("\n\n");
+
         }
+        printf("\n\n");
     }
     return 0;
 }
