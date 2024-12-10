@@ -39,6 +39,10 @@ int main() {
         catch (...) {
             std::cout << "请输入有效的整数！\n";
         }
+    }    
+    if (array.size() == 0) {
+        std::cout << "你没有输入任何数字.\n";
+        return 0;
     }
     insertSort(array);
     std::cout << "排序后的结果为：\n";
