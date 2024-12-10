@@ -1,7 +1,6 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include <sstream>
 void insertSort(std::vector<int>& array) {
     std::vector<int> newArray;
     newArray.push_back(array[0]);
@@ -14,7 +13,7 @@ void insertSort(std::vector<int>& array) {
                 break;
             }
         }
-        if (inserted == 0) {
+        if (!inserted) {
             newArray.push_back(array[i]);
         }
     }
@@ -26,32 +25,35 @@ int main() {
     std::string input;
     int num;
     while (1) {
-        std::cout << "请输入数字，输入空行结束输入并排序：\n";
-        std::getline(std::cin, input);
-        if (input.empty()==1) { 
-            break;
+        array = {};
+        while (1) {
+            std::cout << "\n请输入数字，输入\"exit\"结束输入并排序：\n";
+            std::getline(std::cin, input);
+            if (input == "exit") {
+                break;
+            }
+            try {
+                num = std::stoi(input);
+                array.push_back(num);
+            }
+            catch (...) {
+                std::cout << "请输入正确的数字.\n";
+            }
         }
-
-        try {
-            num = std::stoi(input);
-            array.push_back(num);
+        if (array.size() == 0) {
+            std::cout << "你没有输入任何数字.\n";
         }
-        catch (...) {
-            std::cout << "请输入有效的整数！\n";
+        else {
+            insertSort(array);
+            std::cout << "排序后的结果为：\n";
+            for (int i = 0;i <= array.size() - 1;i++) {
+                std::cout << array[i];
+                if (i != array.size() - 1) {
+                    printf(",");
+                }
+            }
+            printf("\n");
         }
-    }    
-    if (array.size() == 0) {
-        std::cout << "你没有输入任何数字.\n";
-        return 0;
     }
-    insertSort(array);
-    std::cout << "排序后的结果为：\n";
-    for (int i = 0;i <= array.size() - 1;i++) {
-        std::cout << array[i];
-        if (i != array.size() - 1) {
-            printf(",");
-        }
-    }
-    printf("\n");
     return 0;
 }
