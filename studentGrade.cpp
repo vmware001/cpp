@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#define num 4
+#define num 10
 struct student{
     int id;
     std::string name;
@@ -14,15 +14,15 @@ int main(){
     using namespace std;
     student student[num];
     for(int i=0;i<num;i++){
-        cout<<"Please enter the "<<i+1<<" student's id"<<endl;
+        cout<<"Please enter the No."<<i+1<<" student's id"<<endl;
         cin >> student[i].id;
-        cout<<"Please enter the "<<i+1<<" student's name"<<endl;
+        cout<<"Please enter the No."<<i+1<<" student's name"<<endl;
         cin >> student[i].name;
-        cout<<"Please enter the "<<i+1<<" student's A score"<<endl;
+        cout<<"Please enter the No."<<i+1<<" student's A score"<<endl;
         cin >> student[i].score_a;
-        cout<<"Please enter the "<<i+1<<" student's B score"<<endl;
+        cout<<"Please enter the No."<<i+1<<" student's B score"<<endl;
         cin >> student[i].score_b;
-        cout<<"Please enter the "<<i+1<<" student's C score"<<endl;
+        cout<<"Please enter the No."<<i+1<<" student's C score"<<endl;
         cin >> student[i].score_c;
     }
     int average_a=0,average_b=0,average_c=0;
