@@ -9,6 +9,15 @@
 
 using namespace std;
 
+void cls() {
+#ifdef _WIN32
+	system("cls");
+#else
+	system("clear");
+#endif
+}
+
+
 bool isNumber(const string& input) {
 	if (input.empty()) {
 		return false; 
@@ -28,11 +37,11 @@ void query(int score) {
 		getline(cin, input);
 		cout << "\n";
 		if (input == "quit") {
-			system("cls");
+			cls();
 			return;
 		}
 		if (!isNumber(input)) {
-			system("cls");
+			cls();
 			cout << "请检查你的输入.\n" << endl;
 			continue;
 		}
@@ -43,7 +52,7 @@ void query(int score) {
 			continue;
 		}
 		if (expScore == score) {
-			system("cls");
+			cls();
 			cout << "你真厉害，估计的刚刚好！\n\n" ;
 			return;
 		}
@@ -72,7 +81,7 @@ int main() {
 			query(foreignScore);
 		}
 		else {
-			system("cls");
+			cls();
 			cout << "请检查你的输入\n" << endl;
 		}
 	}
