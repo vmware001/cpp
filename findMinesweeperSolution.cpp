@@ -6,6 +6,7 @@ using namespace std;
 int rows = 5;
 int cols = 5;
 
+vector<vector<int>> knownMine(rows, vector<int>(cols, -1));
 int counts = 0;
 
 int mineCountNearby(int r, int c, const vector<vector<int>>& board) {
@@ -36,11 +37,16 @@ bool isValidBoard(const vector<vector<int>>& board, const vector<vector<int>>& k
 void printBoard(const vector<vector<int>>& board) {
     for (int r = 0; r < rows; r++) {
         for (int c = 0; c < cols; c++) {
-            if (board[r][c] == 0) {
-                cout << "O ";
+            if (knownMine[r][c] == -1) {
+                if (board[r][c] == 0) {
+                    cout << "□ ";
+                }
+                else {
+                    cout << "X ";
+                }
             }
             else {
-                cout << "X ";
+                cout << knownMine[r][c] << " ";
             }
         }
         cout << endl;
@@ -73,7 +79,6 @@ void enumBoards(vector<vector<int>>& board, int index, const vector<vector<int>>
 }
 
 int main() {
-    vector<vector<int>> knownMine(rows, vector<int>(cols, -1));
 
     /*
     这是原始数据：
@@ -90,17 +95,16 @@ int main() {
     在下方输入格子的雷数提示，knownMine[r][c]=x;表示第r+1行 第c+1列的格子，周围有x个雷，每一行末尾需要加分号";".
     */
 
-    knownMine[0][1] = 0;
-    knownMine[0][3] = 0;
-    knownMine[1][0] = 0;
-    knownMine[1][1] = 0;
-    knownMine[2][1] = 0;
-    knownMine[2][3] = 0;
-    knownMine[3][0] = 0;
-    knownMine[3][1] = 0;
-    knownMine[4][2] = 0;
-    knownMine[4][3] = 0;
-
+    knownMine[0][1] = 1;
+    knownMine[0][3] = 1;
+    knownMine[1][0] = 2;
+    knownMine[1][1] = 2;
+    knownMine[2][1] = 2;
+    knownMine[2][3] = 2;
+    knownMine[3][0] = 2;
+    knownMine[3][1] = 3;
+    knownMine[4][2] = 1;
+    knownMine[4][3] = 2;
     vector<vector<int>> board(rows, vector<int>(cols, 0));
 
     enumBoards(board, 0, knownMine);
